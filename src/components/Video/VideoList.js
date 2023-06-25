@@ -3,7 +3,7 @@ import Video from "./Video";
 import { useEffect, useState } from "react";
 
 const VideoList = ({ searchTerm }) => {
-  const [videos, setVideos] = useState([{},{},{},{},{},{},{},{},{}]);
+  const [videos, setVideos] = useState([{}, {}, {}, {}, {}, {}, {}, {}, {}]);
 
   useEffect(() => {
     if (searchTerm !== "") {
@@ -24,14 +24,16 @@ const VideoList = ({ searchTerm }) => {
       });
   }
 
-  return (
-    <section className={styles.videoList}>
-      {videos.map((video) => {
-        console.log(video);
-        <Video video={video.snippet} />;
-      })}
-    </section>
-  );
+  let videoComponent;
+  if (Object.keys(videos[0]).length !== 0) {
+    videoComponent = videos.map((video) => (
+      <Video key={Math.random()} video={video.snippet} /> // mapping video data to video component
+    ));
+  } else {
+    videoComponent = <h4>Title</h4>;
+  }
+
+  return <section className={styles.videoList}>{videoComponent}</section>;
 };
 
 export default VideoList;

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "./App.module.css";
 import SearchBar from "./components/Search/SearchBar";
 import VideoList from "./components/Video/VideoList";
