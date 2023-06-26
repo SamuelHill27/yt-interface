@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 const VideoList = ({ searchTerm }) => {
   const [videos, setVideos] = useState([{}, {}, {}, {}, {}, {}, {}, {}, {}]);
+  const [emptyListMsg, setEmptyListMsg] = useState("Empty Video List");
 
   useEffect(() => {
     if (searchTerm !== "") {
@@ -20,8 +21,20 @@ const VideoList = ({ searchTerm }) => {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
-        setVideos(data.items);
+        if (data.error.code === 403) {
+          setEmptyListMsg("Error - quota exceeded");
+          return;
+        }
+
+        const transformedVideos = data.items.map((video) => {
+          return {
+            id: video.id.videoId,
+            title: video.snippet.title,
+            thumbnail: video.snippet.thumbnails.default,
+            channel: video.snippet.channelId,
+          };
+        });
+        setVideos(transformedVideos);
       });
   }
 
@@ -31,7 +44,7 @@ const VideoList = ({ searchTerm }) => {
       <Video key={Math.random()} video={video} /> // mapping video data to video component
     ));
   } else {
-    videoComponent = <h3>Empty Video List</h3>;
+    videoComponent = <h3>{emptyListMsg}</h3>;
   }
 
   return <section className={styles.videoList}>{videoComponent}</section>;

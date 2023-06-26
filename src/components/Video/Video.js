@@ -1,15 +1,11 @@
 import styles from "./Video.module.css";
 
 const Video = (props) => {
-  const title = props.video.snippet.title;
-  const thumbnail = props.video.snippet.thumbnails.default;
-  const url = props.video.id.videoId;
-
   return (
-    <a href={`https://www.youtube.com/embed/${url}`}>
-      <img src={thumbnail.url} alt={title} width={thumbnail.url.width} height={thumbnail.height} ></img>
-      <h4 className={styles.video}>{title}</h4>
-      <p className={styles.video}>{props.video.snippet.channelTitle}</p>
+    <a href={`https://www.youtube.com/embed/${props.id}`}>
+      <img src={props.thumbnail.url} alt={props.title} width={props.thumbnail.width} height={props.thumbnail.height} ></img>
+      <h4 className={styles.video}>{props.title}</h4>
+      <p className={styles.video}>{props.channel}</p>
     </a>
 
     // <iframe 
