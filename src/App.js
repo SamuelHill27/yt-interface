@@ -11,12 +11,18 @@ function App() {
   };
 
   return (
-    <div className={styles.wrapper}>
-      <main className={styles.app}>
-        <SearchBar onSearch={onSearchHandler} />
-        <VideoList searchTerm={searchTerm} />
-      </main>
-    </div>
+    <>
+      {/* empty divs for styling purposes only */}
+      <div className={`${styles.bgImage} ${styles.bgFixedPos}`}></div>
+      <div className={`${styles.bgVignette} ${styles.bgFixedPos}`}></div>
+
+      <div className={styles.container}>
+        <main className={styles.app}>
+          <SearchBar onSearch={onSearchHandler} />
+          <VideoList searchTerm={searchTerm} />
+        </main>
+      </div>
+    </>
   );
 }
 
