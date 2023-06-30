@@ -16,7 +16,7 @@ function App() {
       <div className={`${styles.bgImage} ${styles.bgFixedPos}`}></div>
       <div className={`${styles.bgVignette} ${styles.bgFixedPos}`}></div>
 
-      <div className={styles.container}>
+      <div className={`${styles.container} ${styles.bgFixedPos}`}>
         <main className={styles.app}>
           <SearchBar onSearch={onSearchHandler} />
           <VideoList searchTerm={searchTerm} />

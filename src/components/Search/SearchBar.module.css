@@ -4,6 +4,7 @@
     width: 70%;
     background-color: #111;
     border: 1px red solid;
+    border-radius: 1rem;
 }
 
 .searchBar {
@@ -15,6 +16,7 @@
     border: none;
     animation-name: shrink;
     animation-duration: 0.5s;
+    border-radius: 1rem;
 }
 
 .searchBar:focus {

@@ -1,3 +1,17 @@
 .video {
-    padding: 0.5rem;
+    margin: 0.5rem;
+    text-decoration: none;
+    color: black;
+}
+
+.video__thumbnail {
+    border-radius: 0.5rem;
+}
+
+.video__title {
+    font-weight: bold;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }

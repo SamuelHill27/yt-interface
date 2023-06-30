@@ -10,31 +10,33 @@ const VideoList = ({ searchTerm }) => {
     if (searchTerm !== "") {
       fetchVideosHandler();
     }
-  }, []);
+  }, [searchTerm]);
 
   async function fetchVideosHandler() {
     const key = "AIzaSyCuhzJLtR8G_z9oLypIrl_LC9Da-pRONto";
-    const response = await fetch (
+    const response = await fetch(
       `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=9&q=${searchTerm}&type=video&key=${key}`
     );
     const data = await response.json();
-    
+
     // data error handling
-    if (data.error.code === 403) {
-      setEmptyListMsg("Error - quota exceeded");
-      return;
-    }
+    // if (data.error.code === 403) {
+    //   setEmptyListMsg("Error - quota exceeded");
+    //   return;
+    // }
 
     // add useful data to new objects
     const transformedVideos = data.items.map((video) => {
       return {
-        id: video.id.videoId,
-        title: video.snippet.title,
+        videoId: video.id.videoId,
+        videoTitle: video.snippet.title,
         thumbnail: video.snippet.thumbnails.default,
-        channel: video.snippet.channelId,
+        channelId: video.snippet.channelId,
+        channelTitle: video.snippet.channelTitle
       };
     });
 
+    console.log(data);
     setVideos(transformedVideos);
   }
 
@@ -46,6 +48,16 @@ const VideoList = ({ searchTerm }) => {
   } else {
     videoComponent = <h3>{emptyListMsg}</h3>;
   }
+
+  // let videoComponent = <h3>{emptyListMsg}</h3>;
+
+  // useEffect(() => {
+  //   if (videos.length !== 0) {
+  //     videoComponent = videos.map((video) => (
+  //       <Video key={Math.random()} video={video} /> // mapping video data to video component
+  //     ));
+  //   }
+  // }, [videos]);
 
   return <section className={styles.videoList}>{videoComponent}</section>;
 };
