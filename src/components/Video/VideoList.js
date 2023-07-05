@@ -76,7 +76,11 @@ const VideoList = ({ searchTerm }) => {
       </div>
     );
   } else {
-    videoComponent = <h3>{emptyListMsg}</h3>;
+    videoComponent = (
+      <div className={styles.emptyListMsg}>
+        <h3>{emptyListMsg}</h3>
+      </div>
+    );
   }
 
   return (

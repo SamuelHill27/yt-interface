@@ -24,7 +24,7 @@ function App() {
             <SearchBar onSearch={onSearchHandler} />
             <VideoList searchTerm={searchTerm} />
           </section>
-          <ChannelList />
+          <textarea className={styles.textarea} placeholder="Take notes..."/>
         </main>
       </div>
     </>

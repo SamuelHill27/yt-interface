@@ -38,8 +38,6 @@
 
   max-width: 90%;
   max-height: 90%;
-  min-width: 40%;
-  min-height: 40%;
 
   padding: 1.5rem;
   border-radius: 1rem;
@@ -49,14 +47,34 @@
 .center {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   gap: 1rem;
   margin: 1rem;
   width: 70%;
 }
 
+.textarea {
+  width: auto;
+  height: 80%;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: none;
+  padding: 1rem;
+  font-size: 1rem;
+  border-radius: 1rem;
+  outline: 2px black solid;
+  resize: none;
+}
+
+.textarea::placeholder {
+  color: black;
+}
+
 /* debug */
+
+/* * {
+  border: solid;
+} */
 
 /* .center * {
   border: solid;

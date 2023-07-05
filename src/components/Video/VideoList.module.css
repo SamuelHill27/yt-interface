@@ -4,3 +4,9 @@
     row-gap: 1rem;
     column-gap: 5rem;
 }
+
+.emptyListMsg {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
