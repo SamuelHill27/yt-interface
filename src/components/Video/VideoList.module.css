@@ -1,5 +1,7 @@
 .videoList {
     display: grid;
     grid-template-columns: 33.3% 33.3% 33.3%;
+    width: 100%;
+    height: auto;
     border: solid;
 }

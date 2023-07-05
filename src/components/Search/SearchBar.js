@@ -3,11 +3,13 @@ import SearchIcon from "../../assets/icons8-search.svg";
 import { useRef } from "react";
 
 const SearchBar = (props) => {
-  const searchTerm = useRef();
+  const searchRef = useRef();
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
-    props.onSearch(searchTerm.current.value);
+    if (searchRef.current !== undefined) {
+      props.onSearch(searchRef.current.value);
+    }
   };
 
   return (
@@ -16,7 +18,7 @@ const SearchBar = (props) => {
         type="search"
         placeholder="Youtube Search..."
         className={styles.searchBar}
-        ref={searchTerm}
+        ref={searchRef}
       />
       <input
         type="image"

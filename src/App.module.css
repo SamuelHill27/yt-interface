@@ -1,47 +1,61 @@
 .bgFixedPos {
-    height: 100vh;
-    position: fixed;
-    left: 0;
-    right: 0;
-  }
-  
-  .bgVignette {
-    background: radial-gradient(transparent 50%, black);
-  }
-  
-  .bgImage {
-    background-image: url("./assets/background.jpg");
-    filter: blur(10px);
-    -webkit-filter: blur(10px);
-  
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  right: 0;
+}
+
+.bgVignette {
+  background: radial-gradient(transparent 50%, black);
+}
+
+.bgImage {
+  background-image: url("./assets/background.jpg");
+  filter: blur(10px);
+  -webkit-filter: blur(10px);
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: auto;
-    height: 100vh;
-    color: white;
-    margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: 100vh;
+  color: white;
+  margin: auto;
 }
 
 .app {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
 
-    max-width: 90%;
-    max-height: 90%;
-    min-width: 40%;
-    min-height: 40%;
+  /* max-width: 90%;
+  max-height: 90%;
+  min-width: 40%;
+  min-height: 40%; */
 
-    padding: 1.5rem;
-    border-radius: 1rem;
-    background: rgba(255, 160, 160, 0.6);
+  width: 90%;
+  height: 90%;
+
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background: rgba(255, 160, 160, 0.6);
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 70%;
+  height: 70%;
+  margin: 1rem;
+  border: solid;
 }

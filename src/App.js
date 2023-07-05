@@ -2,6 +2,7 @@ import { useState } from "react";
 import styles from "./App.module.css";
 import SearchBar from "./components/Search/SearchBar";
 import VideoList from "./components/Video/VideoList";
+import ChannelList from "./components/ChannelList/ChannelList";
 
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -18,11 +19,12 @@ function App() {
 
       <div className={`${styles.container} ${styles.bgFixedPos}`}>
         <main className={styles.app}>
-          <section>
-            {/* <p>Hello there</p> */}
+          <ChannelList />
+          <section className={styles.center}>
+            <SearchBar onSearch={onSearchHandler} />
+            <VideoList searchTerm={searchTerm} />
           </section>
-          <SearchBar onSearch={onSearchHandler} />
-          <VideoList searchTerm={searchTerm} />
+          <ChannelList />
         </main>
       </div>
     </>
