@@ -54,14 +54,14 @@ const VideoList = ({ searchTerm }) => {
   }
 
   const nextPageHandler = () => {
-    if (videosIndex !== 15) {
-      setVideosIndex(videosIndex + 3);
+    if (videosIndex !== 12) {
+      setVideosIndex(videosIndex + 12);
     }
   };
 
   const prevPageHandler = () => {
     if (videosIndex !== 0) {
-      setVideosIndex(videosIndex - 3);
+      setVideosIndex(videosIndex - 12);
     }
   };
 
@@ -70,7 +70,7 @@ const VideoList = ({ searchTerm }) => {
   if (videos.length !== 0) {
     videoComponent = (
       <div className={styles.videoList}>
-        {videos.slice(videosIndex, videosIndex + 9).map((video) => (
+        {videos.slice(videosIndex, videosIndex + 12).map((video) => (
           <Video key={Math.random()} video={video} /> // mapping video data to video component
         ))}
       </div>
@@ -84,7 +84,7 @@ const VideoList = ({ searchTerm }) => {
       {videoComponent}
       {videos.length !== 0 && (
         <PageChanger
-          pageNo={videosIndex + 9}
+          pageNo={videosIndex + 12}
           maxPageNo={maxFetchResults}
           onNextPage={nextPageHandler}
           onPrevPage={prevPageHandler}

@@ -1,17 +1,29 @@
 .video {
-    margin: 0.5rem;
+    display: flex;
+    flex-direction: column;
     text-decoration: none;
     color: black;
-    border: solid;
+}
+
+.video__thumbnail_image {
+    width: 100%;
+    border-radius: 1rem;
+    border: 2px black solid;
 }
 
 .video__thumbnail {
-    border-radius: 1rem;
-    max-width: 55%;
+    flex: 1;
+}
+
+.video__details {
+    height: 5rem;
 }
 
 .video__title {
     font-weight: bold;
+}
+
+.video__title, .video__other_details {
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2;
