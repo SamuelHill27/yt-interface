@@ -13,7 +13,7 @@ const Video = (props) => {
         ></img>
       </a>
       <div className={styles.video__title}>{video.videoTitle}</div>
-      <div className={styles.video__channel}>{video.channelTitle}</div>
+      <div className={styles.video__details}>{`${video.channelTitle} | ${video.releaseDate}`}</div>
     </div>
 
     // <iframe

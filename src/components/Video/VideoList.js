@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 
 const VideoList = ({ searchTerm }) => {
   const [videos, setVideos] = useState([]);
+  // tracks through videos list to allow for displaying of only max 9 videos at a time
+  const [videosIndex, setVideosIndex] = useState(0);
   const [emptyListMsg, setEmptyListMsg] = useState("Empty Video List");
 
   useEffect(() => {
@@ -13,13 +15,13 @@ const VideoList = ({ searchTerm }) => {
     }
   }, [searchTerm]);
 
+  const maxFetchResults = 24;
   async function fetchVideosHandler() {
     try {
       const key = "AIzaSyCuhzJLtR8G_z9oLypIrl_LC9Da-pRONto";
-      const maxResults = 24;
 
       const response = await fetch(
-        `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=${maxResults}&q=${searchTerm}&type=video&key=${key}`
+        `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=${maxFetchResults}&q=${searchTerm}&type=video&key=${key}`
       );
       const data = await response.json();
 
@@ -36,6 +38,7 @@ const VideoList = ({ searchTerm }) => {
           thumbnail: video.snippet.thumbnails.medium,
           channelId: video.snippet.channelId,
           channelTitle: video.snippet.channelTitle,
+          releaseDate: video.snippet.publishedAt,
         };
       });
 
@@ -51,19 +54,23 @@ const VideoList = ({ searchTerm }) => {
   }
 
   const nextPageHandler = () => {
-    console.log("next page.");
-  }
+    if (videosIndex !== 15) {
+      setVideosIndex(videosIndex + 3);
+    }
+  };
 
   const prevPageHandler = () => {
-    console.log("prev page.");
-  }
+    if (videosIndex !== 0) {
+      setVideosIndex(videosIndex - 3);
+    }
+  };
 
   // output videolist if possible otherwise output message
   let videoComponent;
   if (videos.length !== 0) {
     videoComponent = (
       <div className={styles.videoList}>
-        {videos.map((video) => (
+        {videos.slice(videosIndex, videosIndex + 9).map((video) => (
           <Video key={Math.random()} video={video} /> // mapping video data to video component
         ))}
       </div>
@@ -75,7 +82,14 @@ const VideoList = ({ searchTerm }) => {
   return (
     <>
       {videoComponent}
-      {videos.length !== 0 && <PageChanger onNextPage={nextPageHandler} onPrevPage={prevPageHandler} />}
+      {videos.length !== 0 && (
+        <PageChanger
+          pageNo={videosIndex + 9}
+          maxPageNo={maxFetchResults}
+          onNextPage={nextPageHandler}
+          onPrevPage={prevPageHandler}
+        />
+      )}
     </>
   );
 };
