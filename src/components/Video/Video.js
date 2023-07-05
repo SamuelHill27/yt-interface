@@ -1,35 +1,54 @@
 import styles from "./Video.module.css";
+import Modal from "./Modal";
+import { useState } from "react";
 
 const Video = (props) => {
   const video = props.video;
-
   const date = new Date(video.releaseDate).toLocaleDateString("en-GB");
+  const link = `https://www.youtube.com/embed/${video.videoId}`;
+
+  const [openModel, setOpenModal] = useState(false);
+
+  const onClickHandler = (event) => {
+    event.preventDefault();
+    setOpenModal(true);
+  };
 
   return (
     <div className={styles.video}>
       <div className={styles.video__thumbnail}>
-        <a href={`https://www.youtube.com/embed/${video.videoId}`}>
+        {/* <a href={`https://www.youtube.com/embed/${video.videoId}`}>
           <img
             className={styles.video__thumbnail_image}
             src={video.thumbnail.url}
             alt={video.videoTitle}
           ></img>
-        </a>
+        </a> */}
+        <button className={styles.video__thumbnail_button} onClick={onClickHandler}>
+          <img
+            className={styles.video__thumbnail_image}
+            src={video.thumbnail.url}
+            alt={video.videoTitle}
+          ></img>
+        </button>
       </div>
+
       <div className={styles.video__details}>
         <div className={styles.video__title}>{video.videoTitle}</div>
         <div
           className={styles.video__other_details}
         >{`${video.channelTitle} | ${date}`}</div>
       </div>
-    </div>
 
-    // <iframe
-    //   allow="fullscreen"
-    //   width="100%"
-    //   height="100%"
-    //   src={`https://www.youtube.com/embed/${video.videoId}`}
-    // ></iframe>
+      {openModel && (
+        <Modal
+          onClick={() => {
+            setOpenModal(false);
+          }}
+          videoLink={link}
+        />
+      )}
+    </div>
   );
 };
 

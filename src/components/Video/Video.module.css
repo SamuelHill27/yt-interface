@@ -5,14 +5,27 @@
     color: black;
 }
 
+.video__thumbnail {
+    flex: 1;
+}
+
+.video__thumbnail_button {
+    border-radius: 1rem;
+    background-color: transparent;
+    padding: 0;
+    border: none;
+}
+
 .video__thumbnail_image {
     width: 100%;
     border-radius: 1rem;
     border: 2px black solid;
+    transition: transform .2s;
 }
 
-.video__thumbnail {
-    flex: 1;
+.video__thumbnail_image:hover {
+    cursor: pointer;
+    transform: scale(1.1);
 }
 
 .video__details {

@@ -1,0 +1,20 @@
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+.overlay {
+    position: fixed;
+    top: 20vh;
+    left: 20%;
+    z-index: 100;
+    overflow: hidden;
+    width: 60%;
+    height: 60vh;
+    border: 0.75rem whitesmoke ridge;
+}
