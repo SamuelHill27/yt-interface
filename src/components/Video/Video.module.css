@@ -2,10 +2,14 @@
     margin: 0.5rem;
     text-decoration: none;
     color: black;
+    width: 30%;
+    height: 33%;
+    border: solid;
 }
 
 .video__thumbnail {
-    border-radius: 0.5rem;
+    border-radius: 1rem;
+    width: 55%;
 }
 
 .video__title {

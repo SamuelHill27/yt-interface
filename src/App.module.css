@@ -35,8 +35,12 @@
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    width: 70%;
-    height: 70%;
+
+    max-width: 90%;
+    max-height: 90%;
+    min-width: 40%;
+    min-height: 40%;
+
     padding: 1.5rem;
     border-radius: 1rem;
     background: rgba(255, 160, 160, 0.6);

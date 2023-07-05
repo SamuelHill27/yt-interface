@@ -18,6 +18,9 @@ function App() {
 
       <div className={`${styles.container} ${styles.bgFixedPos}`}>
         <main className={styles.app}>
+          <section>
+            {/* <p>Hello there</p> */}
+          </section>
           <SearchBar onSearch={onSearchHandler} />
           <VideoList searchTerm={searchTerm} />
         </main>

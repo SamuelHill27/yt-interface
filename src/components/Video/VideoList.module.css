@@ -1,4 +1,9 @@
 .videoList {
-    display: grid;
-    grid-template-columns: auto auto auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex: 1;
+    overflow: auto;
+    width: auto;
+    border: solid;
 }
