@@ -9,7 +9,11 @@
 }
 
 .search:focus-within {
-    cursor: pointer;
+    transform: scale(1.05);
+    box-shadow: 2px 2px 2px #111;
+}
+
+.search:hover {
     transform: scale(1.05);
     box-shadow: 2px 2px 2px #111;
 }
