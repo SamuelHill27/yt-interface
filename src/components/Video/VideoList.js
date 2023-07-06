@@ -5,23 +5,26 @@ import { useEffect, useState } from "react";
 
 const VideoList = ({ searchData }) => {
   const [videos, setVideos] = useState([]);
-  // tracks through videos list to allow for displaying of only max 9 videos at a time
+  // tracks through videos list to allow for displaying of only max 12 videos at a time
   const [videosIndex, setVideosIndex] = useState(0);
   const [emptyListMsg, setEmptyListMsg] = useState("Empty Video List");
 
+  const maxFetchResults = 24;
+  const resultsPerPage = 12;
+
+  // search for videos if a search term exists
   useEffect(() => {
-    if (searchData !== "") {
+    if (searchData.searchTerm !== "") {
       fetchVideosHandler();
     }
   }, [searchData]);
 
-  const maxFetchResults = 24;
   async function fetchVideosHandler() {
     try {
       const key = "AIzaSyCuhzJLtR8G_z9oLypIrl_LC9Da-pRONto";
 
       const response = await fetch(
-        `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=${maxFetchResults}&q=${searchData}&type=video&key=${key}`
+        `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=${maxFetchResults}&q=${searchData.searchTerm}&type=video&key=${key}`
       );
       const data = await response.json();
 
@@ -54,29 +57,31 @@ const VideoList = ({ searchData }) => {
   }
 
   const nextPageHandler = () => {
-    if (videosIndex !== 12) {
-      setVideosIndex(videosIndex + 12);
+    if (videosIndex !== resultsPerPage) {
+      setVideosIndex(videosIndex + resultsPerPage);
     }
   };
 
   const prevPageHandler = () => {
     if (videosIndex !== 0) {
-      setVideosIndex(videosIndex - 12);
+      setVideosIndex(videosIndex - resultsPerPage);
     }
   };
 
   // output videolist if possible otherwise output message
-  let videoComponent;
+  let videoList;
   if (videos.length !== 0) {
-    videoComponent = (
+    videoList = (
       <div className={styles.videoList}>
-        {videos.slice(videosIndex, videosIndex + 12).map((video) => (
-          <Video key={Math.random()} video={video} /> // mapping video data to video component
-        ))}
+        {videos
+          .slice(videosIndex, videosIndex + resultsPerPage)
+          .map((video) => (
+            <Video key={Math.random()} video={video} /> // mapping video data to video component
+          ))}
       </div>
     );
   } else {
-    videoComponent = (
+    videoList = (
       <div className={styles.emptyListMsg}>
         <h3>{emptyListMsg}</h3>
       </div>
@@ -85,10 +90,10 @@ const VideoList = ({ searchData }) => {
 
   return (
     <>
-      {videoComponent}
+      {videoList}
       {videos.length !== 0 && (
         <PageChanger
-          pageNo={videosIndex + 12}
+          pageNo={videosIndex + resultsPerPage}
           maxPageNo={maxFetchResults}
           onNextPage={nextPageHandler}
           onPrevPage={prevPageHandler}

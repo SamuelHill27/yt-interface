@@ -5,14 +5,14 @@ import VideoList from "./components/Video/VideoList";
 import ChannelShortcuts from "./components/ChannelShortcuts/ChannelShortcuts";
 
 function App() {
-  const [searchData, setsearchData] = useState("");
+  const [searchData, setsearchData] = useState({});
 
   const onSearchHandler = (term) => {
-    setsearchData(term);
+    setsearchData({"searchTerm": term});
   };
 
-  const onClickHandler = (term) => {
-    setsearchData(term)
+  const onSelectHandler = (term) => {
+    setsearchData({"searchTerm": term})
   }
 
   return (
@@ -24,7 +24,7 @@ function App() {
       <div className={`${styles.container} ${styles.bgFixedPos}`}>
         <main className={styles.app}>
           <section className={styles.left}>
-            <ChannelShortcuts onClick={onClickHandler} />
+            <ChannelShortcuts onSelect={onSelectHandler} />
           </section>
           <section className={styles.center}>
             <SearchBar onSearch={onSearchHandler} />
