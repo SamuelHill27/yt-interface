@@ -2,8 +2,7 @@ import styles from "./Video.module.css";
 import Modal from "./Modal";
 import { useState } from "react";
 
-const Video = (props) => {
-  const video = props.video;
+const Video = ({ video }) => {
   const date = new Date(video.releaseDate).toLocaleDateString("en-GB");
   const link = `https://www.youtube.com/embed/${video.videoId}`;
 
@@ -17,13 +16,6 @@ const Video = (props) => {
   return (
     <div className={styles.video}>
       <div className={styles.video__thumbnail}>
-        {/* <a href={`https://www.youtube.com/embed/${video.videoId}`}>
-          <img
-            className={styles.video__thumbnail_image}
-            src={video.thumbnail.url}
-            alt={video.videoTitle}
-          ></img>
-        </a> */}
         <button className={styles.video__thumbnail_button} onClick={onClickHandler}>
           <img
             className={styles.video__thumbnail_image}

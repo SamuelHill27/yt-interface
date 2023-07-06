@@ -1,18 +1,18 @@
 import { useState } from "react";
 import styles from "./App.module.css";
 import SearchBar from "./components/Search/SearchBar";
-import VideoList from "./components/Video/VideoList";
+import Videos from "./components/Video/Videos";
 import ChannelShortcuts from "./components/ChannelShortcuts/ChannelShortcuts";
 
 function App() {
-  const [searchData, setsearchData] = useState({});
+  const [searchData, setSearchData] = useState();
 
   const onSearchHandler = (term) => {
-    setsearchData({"searchTerm": term});
+    setSearchData({searchTerm: term, searchFilter: "relevance"})
   };
 
   const onSelectHandler = (term) => {
-    setsearchData({"searchTerm": term})
+    setSearchData({searchTerm: term, searchFilter: "date"})
   }
 
   return (
@@ -28,7 +28,7 @@ function App() {
           </section>
           <section className={styles.center}>
             <SearchBar onSearch={onSearchHandler} />
-            <VideoList searchData={searchData} />
+            <Videos searchData={searchData} />
           </section>
           <textarea className={styles.textarea} placeholder="Take notes..." />
         </main>
