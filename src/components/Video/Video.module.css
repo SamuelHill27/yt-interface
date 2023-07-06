@@ -20,12 +20,13 @@
     width: 100%;
     border-radius: 1rem;
     border: 2px black solid;
-    transition: transform .2s;
+    transition: all .2s;
 }
 
 .video__thumbnail_image:hover {
     cursor: pointer;
     transform: scale(1.1);
+    box-shadow: 2px 2px 2px #111;
 }
 
 .video__details {

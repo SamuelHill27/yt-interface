@@ -3,17 +3,17 @@ import Video from "./Video";
 import PageChanger from "./PageChanger";
 import { useEffect, useState } from "react";
 
-const VideoList = ({ searchTerm }) => {
+const VideoList = ({ searchData }) => {
   const [videos, setVideos] = useState([]);
   // tracks through videos list to allow for displaying of only max 9 videos at a time
   const [videosIndex, setVideosIndex] = useState(0);
   const [emptyListMsg, setEmptyListMsg] = useState("Empty Video List");
 
   useEffect(() => {
-    if (searchTerm !== "") {
+    if (searchData !== "") {
       fetchVideosHandler();
     }
-  }, [searchTerm]);
+  }, [searchData]);
 
   const maxFetchResults = 24;
   async function fetchVideosHandler() {
@@ -21,7 +21,7 @@ const VideoList = ({ searchTerm }) => {
       const key = "AIzaSyCuhzJLtR8G_z9oLypIrl_LC9Da-pRONto";
 
       const response = await fetch(
-        `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=${maxFetchResults}&q=${searchTerm}&type=video&key=${key}`
+        `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=${maxFetchResults}&q=${searchData}&type=video&key=${key}`
       );
       const data = await response.json();
 

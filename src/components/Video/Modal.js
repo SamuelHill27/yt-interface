@@ -1,5 +1,6 @@
 import styles from "./Modal.module.css";
 import ReactDOM from "react-dom";
+import CinemaSeats from "../../assets/VueSeats-edit3.png";
 
 const Backdrop = (props) => {
   return <div className={styles.backdrop} onClick={props.onClick}></div>;
@@ -15,6 +16,7 @@ const Overlay = (props) => {
         height="70%"
         src={props.videoLink}
       ></iframe>
+      <img className={styles.image} src={CinemaSeats} alt="Cinema Seats"></img>
     </div>
   );
 };

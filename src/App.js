@@ -2,14 +2,18 @@ import { useState } from "react";
 import styles from "./App.module.css";
 import SearchBar from "./components/Search/SearchBar";
 import VideoList from "./components/Video/VideoList";
-import ChannelList from "./components/ChannelList/ChannelList";
+import ChannelShortcuts from "./components/ChannelShortcuts/ChannelShortcuts";
 
 function App() {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchData, setsearchData] = useState("");
 
-  const onSearchHandler = (prop) => {
-    setSearchTerm(prop);
+  const onSearchHandler = (term) => {
+    setsearchData(term);
   };
+
+  const onClickHandler = (term) => {
+    setsearchData(term)
+  }
 
   return (
     <>
@@ -20,11 +24,11 @@ function App() {
       <div className={`${styles.container} ${styles.bgFixedPos}`}>
         <main className={styles.app}>
           <section className={styles.left}>
-            <ChannelList />
+            <ChannelShortcuts onClick={onClickHandler} />
           </section>
           <section className={styles.center}>
             <SearchBar onSearch={onSearchHandler} />
-            <VideoList searchTerm={searchTerm} />
+            <VideoList searchData={searchData} />
           </section>
           <textarea className={styles.textarea} placeholder="Take notes..." />
         </main>
