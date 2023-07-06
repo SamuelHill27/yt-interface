@@ -5,16 +5,23 @@
     width: 100%;
     height: 100vh;
     z-index: 10;
-    background-color: rgba(0, 0, 0, 0.75);
+
+    background-image: url("../../assets/cinema.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .overlay {
     position: fixed;
-    top: 20vh;
+    top: 10vh;
     left: 20%;
     z-index: 100;
     overflow: hidden;
     width: 60%;
     height: 60vh;
-    border: 0.75rem whitesmoke ridge;
+}
+
+.iframe {
+    border: 0.75rem #222 inset;
 }

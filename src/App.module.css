@@ -35,13 +35,20 @@
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
+  gap: 2rem;
 
   max-width: 90%;
   max-height: 90%;
 
-  padding: 1.5rem;
+  padding: 3rem;
   border-radius: 1rem;
   background: rgba(255, 160, 160, 0.6);
+}
+
+.left {
+  border: solid;
+  width: 15%;
+  height: 80%;
 }
 
 .center {
@@ -55,7 +62,7 @@
 }
 
 .textarea {
-  width: auto;
+  width: 15%;
   height: 80%;
   background-color: rgba(0, 0, 0, 0.2);
   border: none;

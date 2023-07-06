@@ -9,9 +9,10 @@ const Overlay = (props) => {
   return (
     <div className={styles.overlay}>
       <iframe
+        className={styles.iframe}
         allow="fullscreen"
-        width="100%"
-        height="100%"
+        width="70%"
+        height="70%"
         src={props.videoLink}
       ></iframe>
     </div>

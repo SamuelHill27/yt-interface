@@ -19,12 +19,14 @@ function App() {
 
       <div className={`${styles.container} ${styles.bgFixedPos}`}>
         <main className={styles.app}>
-          <ChannelList />
+          <section className={styles.left}>
+            <ChannelList />
+          </section>
           <section className={styles.center}>
             <SearchBar onSearch={onSearchHandler} />
             <VideoList searchTerm={searchTerm} />
           </section>
-          <textarea className={styles.textarea} placeholder="Take notes..."/>
+          <textarea className={styles.textarea} placeholder="Take notes..." />
         </main>
       </div>
     </>
