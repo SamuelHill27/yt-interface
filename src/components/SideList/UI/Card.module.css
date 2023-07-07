@@ -1,0 +1,10 @@
+.card {
+    background: linear-gradient(-45deg, blue, green);
+    border-radius: 1rem;
+    border: 2px black solid;
+}
+
+.card:hover {
+    transform: scale(1.1);
+    box-shadow: repeat(3, 2px) black;
+}

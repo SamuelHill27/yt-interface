@@ -8,8 +8,7 @@ const Video = ({ video }) => {
 
   const [openModel, setOpenModal] = useState(false);
 
-  const onClickHandler = (event) => {
-    event.preventDefault();
+  const onClickHandler = () => {
     setOpenModal(true);
   };
 
