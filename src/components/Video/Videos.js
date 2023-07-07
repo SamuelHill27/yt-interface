@@ -15,6 +15,7 @@ const Videos = ({ searchData }) => {
 
   async function fetchVideosHandler() {
     try {
+      // soon to be hidden
       const key = "AIzaSyCuhzJLtR8G_z9oLypIrl_LC9Da-pRONto";
 
       const response = await fetch(

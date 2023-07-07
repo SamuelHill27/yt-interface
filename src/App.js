@@ -2,8 +2,7 @@ import { useState } from "react";
 import styles from "./App.module.css";
 import SearchBar from "./components/Search/SearchBar";
 import Videos from "./components/Video/Videos";
-import ChannelShortcuts from "./components/ChannelShortcuts/ChannelShortcuts";
-import List from "./components/List/List";
+import SideList from "./components/SideList/SideList";
 
 function App() {
   const [searchData, setSearchData] = useState();
@@ -26,8 +25,7 @@ function App() {
       <div className={`${styles.container} ${styles.bgFixedPos}`}>
         <main className={styles.app}>
           <section className={styles.left}>
-            {/* <ChannelShortcuts onSelect={onSelectHandler} /> */}
-            <List onSelect={onSelectHandler} />
+            <SideList onSelect={onSelectHandler} />
           </section>
           <section className={styles.center}>
             <SearchBar onSearch={onSearchHandler} />
