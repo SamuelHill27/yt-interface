@@ -2,8 +2,9 @@ import styles from "./VideoList.module.css";
 import Video from "./Video";
 import PageChanger from "./PageChanger";
 import { useState } from "react";
+import ListVideoList from "../../../context/list-videolist";
 
-const VideoList = ({ videos, onSelectChannel }) => {
+const VideoList = ({ videos, onChannelSelect }) => {
   const resultsPerPage = 12;
 
   // tracks through videos list to allow for displaying of only max 12 videos at a time
@@ -22,8 +23,8 @@ const VideoList = ({ videos, onSelectChannel }) => {
     }
   };
 
-  const selectChannelHandler = (channelName) => {
-    onSelectChannel(channelName);
+  const channelSelectHandler = (channelData) => {
+    onChannelSelect(channelData);
   };
 
   return (
@@ -35,7 +36,7 @@ const VideoList = ({ videos, onSelectChannel }) => {
             <Video
               key={Math.random()}
               video={video}
-              onSelectChannel={selectChannelHandler}
+              onChannelSelect={channelSelectHandler}
             /> // mapping video data to video component
           ))}
       </div>

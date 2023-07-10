@@ -1,27 +1,28 @@
-// import styles from "./SideList.module.css";
+import styles from "./SideList.module.css";
 import List from "./List/List";
+import Card from "./UI/Card";
 
-const SideList = ({ onSelect }) => {
-  const selecthandler = (channel) => {
+const SideList = ({ onSelect, newChannelShortcut }) => {
+  const selectHandler = (channel) => {
     onSelect(channel);
   };
 
   const tempChannelShortcuts = [
     {
-      channelName: "MxR Plays",
-      channelId: "id",
+      id: Math.random(),
+      value: "MxR Plays",
     },
     {
-      channelName: "Aba and Preach and Reach hehe =D",
-      channelId: "id",
+      id: Math.random(),
+      value: "Aba and Preach",
     },
   ];
   localStorage.setItem("items", JSON.stringify(tempChannelShortcuts));
 
   return (
     <>
-      <button>Add Shortcut</button>
-      <List onSelect={selecthandler} newItem={""}/>
+      <Card className={styles.watchlist}>Watchlist</Card>
+      <List onSelect={selectHandler} newItem={newChannelShortcut}/>
     </>
   );
 };

@@ -1,17 +1,14 @@
 import styles from "./Item.module.css";
 import Card from "../UI/Card";
-import { useRef } from "react";
 import RemoveIcon from "../../../assets/x.png";
 
-const Item = ({ onSelect, onDelete, text }) => {
-  const textRef = useRef();
-
+const Item = ({ onSelect, onDelete, id, value }) => {
   const selectHandler = () => {
-    onSelect(textRef.current.textContent);
+    onSelect({id, value});
   };
 
   const deleteHandler = () => {
-    onDelete(textRef.current.textContent);
+    onDelete({id, value});
   };
 
   return (
@@ -19,9 +16,8 @@ const Item = ({ onSelect, onDelete, text }) => {
       <button
         className={styles.item__select_btn}
         onClick={selectHandler}
-        ref={textRef}
       >
-        {text}
+        {value}
       </button>
       <button className={styles.item__delete_btn} onClick={deleteHandler}>
         <img src={RemoveIcon} alt="remove icon"></img>

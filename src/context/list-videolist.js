@@ -1,7 +1,7 @@
 import react from "react";
 
 const ListVideoList = react.createContext({
-    channelData: {}
+    channelName: ""
 });
 
 export default ListVideoList;

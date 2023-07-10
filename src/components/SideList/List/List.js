@@ -1,13 +1,11 @@
 import styles from "./List.module.css";
 import Item from "./Item";
-import { useState, useEffect, useContext } from "react";
-import ListVideoList from "../../../context/list-videolist";
+import { useState, useEffect } from "react";
 
 const List = ({ onSelect, newItem }) => {
   const [items, setItems] = useState([]);
-  const ctx = useContext(ListVideoList);
 
-  // gets items from local storage if it exists
+  // gets items from local storage if it exists at initial render
   useEffect(() => {
     const itemsInLocalStorage = localStorage.getItem("items");
     if (itemsInLocalStorage) {
@@ -22,18 +20,18 @@ const List = ({ onSelect, newItem }) => {
     return [];
   };
 
-  // add new item
+  // add new item - updates upon change in prop state
   useEffect(() => {
-    if (newItem !== "") {
+    if (newItem) {
       setItems((prevItems) => [...prevItems, newItem]);
     }
   }, [newItem]);
 
-  // delete existing item
-  const deleteHandler = (channelName) => {
+  // delete existing item by filtering it out using ids
+  const deleteHandler = (item) => {
     setItems((prevItems) => {
       return prevItems.filter((prevItem) => {
-        return prevItem.channelName !== channelName;
+        return prevItem.id !== item.id;
       });
     });
   };
@@ -51,7 +49,8 @@ const List = ({ onSelect, newItem }) => {
               <Item
                 onSelect={selectHandler}
                 onDelete={deleteHandler}
-                text={item.channelName}
+                id={item.id}
+                value={item.value}
               />
             </li>
           ))}

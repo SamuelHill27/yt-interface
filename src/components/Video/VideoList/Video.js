@@ -1,8 +1,8 @@
 import styles from "./Video.module.css";
 import Modal from "./Modal";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
-const Video = ({ video, onSelectChannel }) => {
+const Video = ({ video, onChannelSelect }) => {
   const date = new Date(video.releaseDate).toLocaleDateString("en-GB");
   const link = `https://www.youtube.com/embed/${video.videoId}`;
 
@@ -12,14 +12,20 @@ const Video = ({ video, onSelectChannel }) => {
     setOpenModal(true);
   };
 
-  const selectChannelHandler = (event) => {
-    onSelectChannel(event.target.value);
+  const channelSelectHandler = () => {
+    onChannelSelect({
+      value: video.channelTitle,
+      id: video.channelId,
+    });
   };
 
   return (
     <div className={styles.video}>
       <div className={styles.video__thumbnail}>
-        <button className={styles.video__thumbnail_button} onClick={openModalHandler}>
+        <button
+          className={styles.video__thumbnail_button}
+          onClick={openModalHandler}
+        >
           <img
             className={styles.video__thumbnail_image}
             src={video.thumbnail.url}
@@ -30,10 +36,8 @@ const Video = ({ video, onSelectChannel }) => {
 
       <div className={styles.video__context}>
         <div className={styles.video__title}>{video.videoTitle}</div>
-        <button onClick={selectChannelHandler}>{video.channelTitle}</button>
-        <div className={styles.video__details}>
-          {`250K views | ${date}`}
-        </div>
+        <button onClick={channelSelectHandler}>{video.channelTitle}</button>
+        <div className={styles.video__details}>{`250K views | ${date}`}</div>
       </div>
 
       {openModel && (

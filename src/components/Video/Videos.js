@@ -2,7 +2,7 @@ import styles from "./Videos.module.css";
 import { useEffect, useState } from "react";
 import VideoList from "./VideoList/VideoList";
 
-const Videos = ({ searchData, onSelectChannel }) => {
+const Videos = ({ searchData, onChannelSelect }) => {
   const [videos, setVideos] = useState([]);
   const [emptyListMsg, setEmptyListMsg] = useState("Empty Video List");
   const maxFetchResults = 24;
@@ -18,9 +18,14 @@ const Videos = ({ searchData, onSelectChannel }) => {
       // soon to be hidden
       const key = "AIzaSyCuhzJLtR8G_z9oLypIrl_LC9Da-pRONto";
 
-      const response = await fetch(
-        `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=${maxFetchResults}&order=${searchData.searchFilter}&q=${searchData.searchTerm}&type=video&key=${key}`
-      );
+      let url = "error";
+      if (searchData.channelId) {
+        url = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=${searchData.channelId}&maxResults=${maxFetchResults}&order=${searchData.searchFilter}&q=${searchData.searchTerm}&type=video&key=${key}`
+      } else {
+        url = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=${maxFetchResults}&order=${searchData.searchFilter}&q=${searchData.searchTerm}&type=video&key=${key}`
+      }
+
+      const response = await fetch(url);
       const data = await response.json();
 
       // deals with exceeded quota error primarily
@@ -51,14 +56,14 @@ const Videos = ({ searchData, onSelectChannel }) => {
     }
   }
 
-  const selectChannelHandler = (channel) => {
-    onSelectChannel(channel);
-  }
+  const channelSelectHandler = (channelData) => {
+    onChannelSelect(channelData);
+  };
 
   return (
     <>
       {videos.length !== 0 ? (
-        <VideoList videos={videos} onSelectChannel={selectChannelHandler}/>
+        <VideoList videos={videos} onChannelSelect={channelSelectHandler} />
       ) : (
         <div className={styles.emptyListMsg}>
           <h3>{emptyListMsg}</h3>
