@@ -1,16 +1,28 @@
 import styles from "./SideList.module.css";
 import List from "./List/List";
-import { useEffect, useState } from "react";
 
 const SideList = ({ onSelect }) => {
-  const onSelectHandler = (data) => {
-    onSelect(data);
+  const selecthandler = (channel) => {
+    onSelect(channel);
   };
+
+  const tempChannelShortcuts = [
+    {
+      channelName: "MxR Plays",
+      channelId: "id",
+    },
+    {
+      channelName: "Aba and Preach",
+      channelId: "id",
+    },
+  ];
+
+  localStorage.setItem("items", JSON.stringify(tempChannelShortcuts));
 
   return (
     <>
       <button>Add Shortcut</button>
-      <List onSelect={onSelectHandler} />
+      <List onSelect={selecthandler} newItem={""}/>
     </>
   );
 };

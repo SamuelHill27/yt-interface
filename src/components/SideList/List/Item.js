@@ -1,17 +1,30 @@
 import styles from "./Item.module.css";
 import Card from "../UI/Card";
+import { useRef } from "react";
 
-const Item = ({ onSelect, data }) => {
-  const onClickHandler = () => {
-    onSelect(data);
+const Item = ({ onSelect, onDelete, text }) => {
+  const textRef = useRef();
+
+  const selectHandler = () => {
+    onSelect(textRef.current.textContent);
+  };
+
+  const deleteHandler = () => {
+    onDelete(textRef.current.textContent);
   };
 
   return (
     <Card>
-      <button className={styles.item__button} onClick={onClickHandler}>
-        {data}
+      <button
+        className={styles.item__select_btn}
+        onClick={selectHandler}
+        ref={textRef}
+      >
+        {text}
       </button>
-      <button>img</button>
+      <button className={styles.item__delete_btn} onClick={deleteHandler}>
+        img
+      </button>
     </Card>
   );
 };

@@ -5,7 +5,7 @@ import { useRef } from "react";
 const SearchBar = (props) => {
   const searchRef = useRef();
 
-  const onSubmitHandler = (event) => {
+  const submitHandler = (event) => {
     event.preventDefault();
     if (searchRef.current !== undefined) {
       props.onSearch(searchRef.current.value);
@@ -13,7 +13,7 @@ const SearchBar = (props) => {
   };
 
   return (
-    <form onSubmit={onSubmitHandler} className={styles.search}>
+    <form onSubmit={submitHandler} className={styles.search}>
       <input
         type="search"
         placeholder="Youtube Search..."

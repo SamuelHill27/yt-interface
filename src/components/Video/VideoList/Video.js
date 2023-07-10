@@ -2,7 +2,7 @@ import styles from "./Video.module.css";
 import Modal from "./Modal";
 import { useState } from "react";
 
-const Video = ({ video }) => {
+const Video = ({ video, onSelectChannel }) => {
   const date = new Date(video.releaseDate).toLocaleDateString("en-GB");
   const link = `https://www.youtube.com/embed/${video.videoId}`;
 
@@ -12,8 +12,8 @@ const Video = ({ video }) => {
     setOpenModal(true);
   };
 
-  const selectChannelHandler = () => {
-
+  const selectChannelHandler = (event) => {
+    onSelectChannel(event.target.value);
   };
 
   return (

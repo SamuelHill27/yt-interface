@@ -7,13 +7,13 @@ import SideList from "./components/SideList/SideList";
 function App() {
   const [searchData, setSearchData] = useState();
 
-  const onSearchHandler = (term) => {
+  const searchHandler = (term) => {
     setSearchData({searchTerm: term, searchFilter: "relevance"})
   };
 
-  const onSelectHandler = (term) => {
-    console.log(term);
-    setSearchData({searchTerm: term, searchFilter: "date"})
+  const shortcutSelectHandler = (term) => {
+    // console.log(term);
+    // setSearchData({searchTerm: term, searchFilter: "date"})
   }
 
   return (
@@ -25,10 +25,10 @@ function App() {
       <div className={`${styles.container} ${styles.bgFixedPos}`}>
         <main className={styles.app}>
           <section className={styles.left}>
-            <SideList onSelect={onSelectHandler} />
+            <SideList onSelect={shortcutSelectHandler} />
           </section>
           <section className={styles.center}>
-            <SearchBar onSearch={onSearchHandler} />
+            <SearchBar onSearch={searchHandler} />
             <Videos searchData={searchData} />
           </section>
           <textarea className={styles.textarea} placeholder="Take notes..." />

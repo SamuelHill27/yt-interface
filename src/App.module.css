@@ -48,6 +48,7 @@
 
 .left {
   min-width: 15%;
+  max-width: 20%;
   height: 80%;
   overflow: auto;
 }

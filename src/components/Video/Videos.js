@@ -2,7 +2,7 @@ import styles from "./Videos.module.css";
 import { useEffect, useState } from "react";
 import VideoList from "./VideoList/VideoList";
 
-const Videos = ({ searchData }) => {
+const Videos = ({ searchData, onSelectChannel }) => {
   const [videos, setVideos] = useState([]);
   const [emptyListMsg, setEmptyListMsg] = useState("Empty Video List");
   const maxFetchResults = 24;
@@ -51,10 +51,14 @@ const Videos = ({ searchData }) => {
     }
   }
 
+  const selectChannelHandler = (channel) => {
+    onSelectChannel(channel);
+  }
+
   return (
     <>
       {videos.length !== 0 ? (
-        <VideoList videos={videos} />
+        <VideoList videos={videos} onSelectChannel={selectChannelHandler}/>
       ) : (
         <div className={styles.emptyListMsg}>
           <h3>{emptyListMsg}</h3>

@@ -2,39 +2,62 @@ import styles from "./List.module.css";
 import Item from "./Item";
 import { useState, useEffect } from "react";
 
-const List = ({ onSelect }) => {
+const List = ({ onSelect, newItem }) => {
   const [items, setItems] = useState([]);
 
   // gets items from local storage if it exists
   useEffect(() => {
     const itemsInLocalStorage = localStorage.getItem("items");
     if (itemsInLocalStorage) {
-      setItems(itemsInLocalStorage);
+      setItems(JSON.parse(itemsInLocalStorage));
+    } else {
+      setItems(fetchItems());
     }
   }, []);
 
-  // sets local storage from items upon items change
-  useEffect(() => {
-    localStorage.setItem("items", items);
-  }, items);
+  const fetchItems = () => {
+    // fetch items from online database
+    return [];
+  };
 
-  // add new Item
+  // add new item
   useEffect(() => {
-    setItems((prevItems) => [...prevItems]);
-  }, []);
+    if (newItem !== "") {
+      setItems((prevItems) => [...prevItems, newItem]);
+    }
+  }, [newItem]);
 
-  const onSelectHandler = (item) => {
+  // delete existing item
+  const deleteHandler = (channelName) => {
+    setItems((prevItems) => {
+      return prevItems.filter((prevItem) => {
+        return prevItem.channelName !== channelName;
+      });
+    });
+  };
+
+  const selectHandler = (item) => {
     onSelect(item);
   };
 
   return (
-    <ul className={styles.list}>
-      {items.map((item, index) => (
-        <li key={Math.random()}>
-          <Item onSelect={onSelectHandler} data={item} index={index} />
-        </li>
-      ))}
-    </ul>
+    <>
+      {items.length !== 0 ? (
+        <ul className={styles.list}>
+          {items.map((item) => (
+            <li key={Math.random()}>
+              <Item
+                onSelect={selectHandler}
+                onDelete={deleteHandler}
+                text={item.channelName}
+              />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No channel shortcuts</p>
+      )}
+    </>
   );
 };
 
