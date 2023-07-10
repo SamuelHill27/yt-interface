@@ -1,6 +1,7 @@
 import styles from "./Item.module.css";
 import Card from "../UI/Card";
 import { useRef } from "react";
+import RemoveIcon from "../../../assets/x.png";
 
 const Item = ({ onSelect, onDelete, text }) => {
   const textRef = useRef();
@@ -23,7 +24,7 @@ const Item = ({ onSelect, onDelete, text }) => {
         {text}
       </button>
       <button className={styles.item__delete_btn} onClick={deleteHandler}>
-        img
+        <img src={RemoveIcon} alt="remove icon"></img>
       </button>
     </Card>
   );

@@ -60,7 +60,8 @@
   align-items: center;
   gap: 1rem;
   margin: 1rem;
-  width: 70%;
+  max-width: 70%;
+  flex: 1;
   min-height: 80%;
 }
 

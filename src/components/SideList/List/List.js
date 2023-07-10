@@ -1,9 +1,11 @@
 import styles from "./List.module.css";
 import Item from "./Item";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import ListVideoList from "../../../context/list-videolist";
 
 const List = ({ onSelect, newItem }) => {
   const [items, setItems] = useState([]);
+  const ctx = useContext(ListVideoList);
 
   // gets items from local storage if it exists
   useEffect(() => {
@@ -45,7 +47,7 @@ const List = ({ onSelect, newItem }) => {
       {items.length !== 0 ? (
         <ul className={styles.list}>
           {items.map((item) => (
-            <li key={Math.random()}>
+            <li key={Math.random()} className={styles.list__item}>
               <Item
                 onSelect={selectHandler}
                 onDelete={deleteHandler}

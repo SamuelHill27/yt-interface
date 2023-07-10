@@ -1,4 +1,4 @@
-import styles from "./SideList.module.css";
+// import styles from "./SideList.module.css";
 import List from "./List/List";
 
 const SideList = ({ onSelect }) => {
@@ -12,11 +12,10 @@ const SideList = ({ onSelect }) => {
       channelId: "id",
     },
     {
-      channelName: "Aba and Preach",
+      channelName: "Aba and Preach and Reach hehe =D",
       channelId: "id",
     },
   ];
-
   localStorage.setItem("items", JSON.stringify(tempChannelShortcuts));
 
   return (

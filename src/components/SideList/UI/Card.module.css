@@ -1,10 +1,16 @@
 .card {
-    background: linear-gradient(-45deg, blue, green);
+    background-color: beige;
     border-radius: 1rem;
     border: 2px black solid;
+    transition: transform .2s, box-shadow .2s;
+    padding: .3rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .card:hover {
-    transform: scale(1.1);
-    box-shadow: repeat(3, 2px) black;
+    transform: scale(1.05);
+    box-shadow: 1px 1px 1px #111;
 }
