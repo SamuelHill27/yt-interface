@@ -8,14 +8,18 @@ const Video = ({ video }) => {
 
   const [openModel, setOpenModal] = useState(false);
 
-  const onClickHandler = () => {
+  const openModalHandler = () => {
     setOpenModal(true);
+  };
+
+  const selectChannelHandler = () => {
+
   };
 
   return (
     <div className={styles.video}>
       <div className={styles.video__thumbnail}>
-        <button className={styles.video__thumbnail_button} onClick={onClickHandler}>
+        <button className={styles.video__thumbnail_button} onClick={openModalHandler}>
           <img
             className={styles.video__thumbnail_image}
             src={video.thumbnail.url}
@@ -24,11 +28,12 @@ const Video = ({ video }) => {
         </button>
       </div>
 
-      <div className={styles.video__details}>
+      <div className={styles.video__context}>
         <div className={styles.video__title}>{video.videoTitle}</div>
-        <div
-          className={styles.video__other_details}
-        >{`${video.channelTitle} | ${date}`}</div>
+        <button onClick={selectChannelHandler}>{video.channelTitle}</button>
+        <div className={styles.video__details}>
+          {`250K views | ${date}`}
+        </div>
       </div>
 
       {openModel && (

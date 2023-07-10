@@ -1,6 +1,6 @@
 import styles from "./Modal.module.css";
 import ReactDOM from "react-dom";
-import CinemaSeats from "../../assets/VueSeats-edit3.png";
+import CinemaSeats from "../../../assets/VueSeats-edit3.png";
 
 const Backdrop = (props) => {
   return <div className={styles.backdrop} onClick={props.onClick}></div>;

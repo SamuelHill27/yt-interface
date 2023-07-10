@@ -1,6 +1,6 @@
 import styles from "./Videos.module.css";
 import { useEffect, useState } from "react";
-import VideoList from "./VideoList";
+import VideoList from "./VideoList/VideoList";
 
 const Videos = ({ searchData }) => {
   const [videos, setVideos] = useState([]);

@@ -4,10 +4,11 @@ import PageChanger from "./PageChanger";
 import { useState } from "react";
 
 const VideoList = ({ videos }) => {
+  const resultsPerPage = 12;
+  
   // tracks through videos list to allow for displaying of only max 12 videos at a time
   const [videosIndex, setVideosIndex] = useState(0);
   const maxFetchResults = videos.length;
-  const resultsPerPage = 12;
 
   const nextPageHandler = () => {
     if (videosIndex !== resultsPerPage) {
