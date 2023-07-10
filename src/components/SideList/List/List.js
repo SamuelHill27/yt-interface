@@ -11,7 +11,7 @@ const List = ({ onSelect, newItem }) => {
     if (itemsInLocalStorage) {
       setItems(JSON.parse(itemsInLocalStorage));
     } else {
-      setItems(fetchItems());
+      // localStorage.setItem("items", fetchItems());
     }
   }, []);
 
@@ -22,7 +22,8 @@ const List = ({ onSelect, newItem }) => {
 
   // add new item - updates upon change in prop state
   useEffect(() => {
-    if (newItem) {
+    const itemAlreadyExists = !items.find(item => item.id === newItem.id);
+    if (newItem && itemAlreadyExists) {
       setItems((prevItems) => [...prevItems, newItem]);
     }
   }, [newItem]);
@@ -35,6 +36,10 @@ const List = ({ onSelect, newItem }) => {
       });
     });
   };
+
+  useEffect(() => {
+    localStorage.setItem("items", JSON.stringify(items));
+  }, [items]);
 
   const selectHandler = (item) => {
     onSelect(item);

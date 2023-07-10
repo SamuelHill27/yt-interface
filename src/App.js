@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./App.module.css";
 import SearchBar from "./components/Search/SearchBar";
 import Videos from "./components/Video/Videos";
@@ -7,6 +7,19 @@ import SideList from "./components/SideList/SideList";
 function App() {
   const [searchData, setSearchData] = useState();
   const [newChannelShortcut, setNewChannelShortcut] = useState();
+  const [notes, setNotes] = useState("");
+
+  useEffect(() => {
+    const notesInLocalStorage = localStorage.getItem("notes");
+    if (notesInLocalStorage) {
+      console.log("notes loaded");
+      setNotes(notesInLocalStorage);
+    }
+  }, []);
+
+  const saveNotesLocally = (event) => {
+    localStorage.setItem("notes", event.target.value);
+  };
 
   const searchHandler = (term) => {
     setSearchData({
@@ -49,7 +62,12 @@ function App() {
               onChannelSelect={channelSelectHandler}
             />
           </section>
-          <textarea className={styles.textarea} placeholder="Take notes..." />
+          <textarea
+            className={styles.textarea}
+            placeholder="Take notes..."
+            onChange={saveNotesLocally}
+            defaultValue={notes}
+          />
         </main>
       </div>
     </>

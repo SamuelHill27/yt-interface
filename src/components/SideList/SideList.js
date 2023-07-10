@@ -7,17 +7,17 @@ const SideList = ({ onSelect, newChannelShortcut }) => {
     onSelect(channel);
   };
 
-  const tempChannelShortcuts = [
-    {
-      id: Math.random(),
-      value: "MxR Plays",
-    },
-    {
-      id: Math.random(),
-      value: "Aba and Preach",
-    },
-  ];
-  localStorage.setItem("items", JSON.stringify(tempChannelShortcuts));
+  // const tempChannelShortcuts = [
+  //   {
+  //     id: Math.random(),
+  //     value: "MxR Plays",
+  //   },
+  //   {
+  //     id: Math.random(),
+  //     value: "Aba and Preach",
+  //   },
+  // ];
+  // localStorage.setItem("items", JSON.stringify(tempChannelShortcuts));
 
   return (
     <>
