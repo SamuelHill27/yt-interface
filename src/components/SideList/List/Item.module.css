@@ -2,15 +2,23 @@
   flex: 1;
 }
 
-.item__select_btn, .item__delete_btn {
+.item__delete_btn {
+  display: flex;
+  align-items: center;
+  padding: 0.3rem;
+  width: 2rem;
+}
+
+.item__delete_btn img {
+  width: 80%;
+}
+
+.item__select_btn,
+.item__delete_btn {
   background: transparent;
   border: none;
   border-radius: 1rem;
   font-size: 1rem;
   cursor: pointer;
-}
-
-.item__delete_btn img {
-  width: 20px;
-  border: solid;
+  padding: 0.4rem;
 }

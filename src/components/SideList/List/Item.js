@@ -12,7 +12,7 @@ const Item = ({ onSelect, onDelete, id, value }) => {
   };
 
   return (
-    <Card>
+    <Card className={styles.item}>
       <button
         className={styles.item__select_btn}
         onClick={selectHandler}

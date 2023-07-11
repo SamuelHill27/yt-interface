@@ -21,8 +21,13 @@ const SideList = ({ onSelect, newChannelShortcut }) => {
 
   return (
     <>
-      <Card className={styles.watchlist}>Watchlist</Card>
-      <List onSelect={selectHandler} newItem={newChannelShortcut}/>
+      <div className={styles.watchlist}>
+        <Card>
+          <button>Watchlist</button>
+        </Card>
+      </div>
+      <div className={styles.divider}></div>
+      <List onSelect={selectHandler} newItem={newChannelShortcut} />
     </>
   );
 };
