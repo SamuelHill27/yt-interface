@@ -4,9 +4,8 @@ import { useState } from "react";
 import moment from "moment/moment";
 
 const Video = ({ video, onChannelSelect }) => {
-  const link = `https://www.youtube.com/embed/${video.videoId}`;
-
   const [openModel, setOpenModal] = useState(false);
+  const link = `https://www.youtube.com/embed/${video.videoId}`;
 
   const convertViews = (views) => {
     let roundedViews = "0";
@@ -59,7 +58,7 @@ const Video = ({ video, onChannelSelect }) => {
         <button onClick={channelSelectHandler}>{video.channelTitle}</button>
         <div className={styles.video__details}>{`${convertViews(
           video.viewCount
-        )} | ${convertDate(video.releaseDate)}`}</div>
+        )} views | ${convertDate(video.releaseDate)}`}</div>
       </div>
 
       {openModel && (

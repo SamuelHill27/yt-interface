@@ -19,6 +19,10 @@
 	background-color: #D62929;
 }
 
+body {
+  background-color: black;
+}
+
 .bgFixedPos {
   height: 100vh;
   position: fixed;

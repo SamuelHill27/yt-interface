@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import styles from "./App.module.css";
-import SearchBar from "./components/Search/SearchBar";
+import Search from "./components/Search/Search";
 import Videos from "./components/Video/Videos";
 import SideList from "./components/SideList/SideList";
 
@@ -55,7 +55,7 @@ function App() {
             />
           </section>
           <section className={styles.center}>
-            <SearchBar onSearch={searchHandler} />
+            <Search onSearch={searchHandler} />
             <Videos
               searchData={searchData}
               onChannelSelect={channelSelectHandler}
