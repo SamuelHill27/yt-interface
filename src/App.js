@@ -12,7 +12,6 @@ function App() {
   useEffect(() => {
     const notesInLocalStorage = localStorage.getItem("notes");
     if (notesInLocalStorage) {
-      console.log("notes loaded");
       setNotes(notesInLocalStorage);
     }
   }, []);
