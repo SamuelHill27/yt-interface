@@ -12,6 +12,7 @@ const Videos = ({ searchData, onChannelSelect }) => {
       // soon to be hidden
       const key = "AIzaSyCuhzJLtR8G_z9oLypIrl_LC9Da-pRONto";
 
+      // differentiating between channel shortcut search and search bar search
       let url = "error";
       if (searchData.channelId) {
         url = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=${searchData.channelId}&maxResults=${maxFetchResults}&order=${searchData.searchFilter}&q=${searchData.searchTerm}&type=video&key=${key}`;
@@ -19,15 +20,21 @@ const Videos = ({ searchData, onChannelSelect }) => {
         url = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=${maxFetchResults}&order=${searchData.searchFilter}&q=${searchData.searchTerm}&type=video&key=${key}`;
       }
 
-      const videoData = fetch(url)
+      const videoIds = fetch(url)
         .then((response) => response.json())
         .then((data) => {
           return data.items.map((video) => {
             return video.id.videoId;
           });
         })
-        .then(async (videoIds) => {
-          url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoIds}&key=${key}`;
+        .catch(err => {
+          console.log(err);
+          setEmptyListMsg("Error: unable to fetch video ids, likely due to reaching quota limit.");
+        });
+
+      const videoData = videoIds
+        .then(async (ids) => {
+          url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${ids}&key=${key}`;
           const response = await fetch(url);
           const data = await response.json();
           return data.items.map((video) => {
@@ -43,9 +50,9 @@ const Videos = ({ searchData, onChannelSelect }) => {
             };
           });
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(err);
-          setEmptyListMsg("Error: unable to fetch videos.");
+          setEmptyListMsg("Error: unable to fetch video data.");
         });
 
       videoData.then((data) => {

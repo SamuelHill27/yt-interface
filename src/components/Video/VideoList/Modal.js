@@ -16,7 +16,12 @@ const Overlay = (props) => {
         height="70%"
         src={props.videoLink}
       ></iframe>
-      <img className={styles.image} src={CinemaSeats} alt="Cinema Seats"></img>
+      <img
+        className={styles.image}
+        src={CinemaSeats}
+        alt="Cinema Seats"
+        onClick={props.onClick}
+      ></img>
     </div>
   );
 };
@@ -29,7 +34,7 @@ const Modal = (props) => {
         document.getElementById("backdrop-root")
       )}
       {ReactDOM.createPortal(
-        <Overlay videoLink={props.videoLink} />,
+        <Overlay videoLink={props.videoLink} onClick={props.onClick} />,
         document.getElementById("backdrop-root")
       )}
     </>
