@@ -30,7 +30,7 @@
 }
 
 .video__context {
-    height: 5.3rem;
+    height: 5rem;
 }
 
 .video__context * {
@@ -43,8 +43,9 @@
     background: transparent;
     border: none;
     padding: 0;
+    padding-top: 0.1rem;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 0.9rem;
     -webkit-line-clamp: 1;
 }
 
@@ -55,4 +56,8 @@
 .video__title {
     font-weight: bold;
     -webkit-line-clamp: 2;
+}
+
+.video__details {
+    font-size: 0.9rem;
 }

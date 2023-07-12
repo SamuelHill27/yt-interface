@@ -10,8 +10,6 @@ const List = ({ onSelect, newItem }) => {
     const itemsInLocalStorage = localStorage.getItem("items");
     if (itemsInLocalStorage) {
       setItems(JSON.parse(itemsInLocalStorage));
-    } else {
-      // localStorage.setItem("items", fetchItems());
     }
   }, []);
 

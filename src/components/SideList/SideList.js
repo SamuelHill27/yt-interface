@@ -7,18 +7,6 @@ const SideList = ({ onSelect, newChannelShortcut }) => {
     onSelect(channel);
   };
 
-  // const tempChannelShortcuts = [
-  //   {
-  //     id: Math.random(),
-  //     value: "MxR Plays",
-  //   },
-  //   {
-  //     id: Math.random(),
-  //     value: "Aba and Preach",
-  //   },
-  // ];
-  // localStorage.setItem("items", JSON.stringify(tempChannelShortcuts));
-
   return (
     <>
       <div className={styles.watchlist}>
@@ -26,7 +14,9 @@ const SideList = ({ onSelect, newChannelShortcut }) => {
           <button>Watchlist</button>
         </Card>
       </div>
-      <div className={styles.divider}></div>
+      <div className={styles.dividerContainer}>
+        <div className={styles.divider}></div>
+      </div>
       <List onSelect={selectHandler} newItem={newChannelShortcut} />
     </>
   );

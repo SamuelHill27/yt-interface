@@ -26,11 +26,17 @@
   padding: 0.4rem;
 }
 
+.dividerContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .divider {
+  margin: 0.3rem 0;
   height: 0.35rem;
   border-radius: 1rem;
   width: 80%;
   background-color: black;
   border: 1px red solid;
-  margin: auto;
 }
