@@ -1,0 +1,18 @@
+.pageChanger {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.pageChanger button {
+    border-radius: 0.5rem;
+    background-color: transparent;
+    border: 1px black solid;
+    cursor: pointer;
+    transition: transform .2s;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.pageChanger button:hover {
+    transform: scale(1.2);
+}

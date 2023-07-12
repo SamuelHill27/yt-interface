@@ -1,0 +1,36 @@
+.list {
+  list-style-type: none;
+  padding: 0.75rem;
+  margin: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.watchlist {
+  margin-top: 1px;
+  margin-bottom: 0.6rem;
+  padding: 0 0.6rem;
+}
+
+.watchlist button {
+  width: 100%;
+  text-align: center;
+  background-color: transparent;
+  border: none;
+  font-size: 1.3rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.4rem;
+}
+
+.divider {
+  height: 0.35rem;
+  border-radius: 1rem;
+  width: 80%;
+  background-color: black;
+  border: 1px red solid;
+  margin: auto;
+}

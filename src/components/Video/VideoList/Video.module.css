@@ -1,0 +1,58 @@
+.video {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: black;
+}
+
+.video__thumbnail {
+    flex: 1;
+}
+
+.video__thumbnail_button {
+    border-radius: 1rem;
+    background-color: transparent;
+    padding: 0;
+    border: none;
+}
+
+.video__thumbnail_image {
+    width: 100%;
+    border-radius: 1rem;
+    border: 2px black solid;
+    transition: all .2s;
+}
+
+.video__thumbnail_image:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    box-shadow: 2px 2px 2px #111;
+}
+
+.video__context {
+    height: 5.3rem;
+}
+
+.video__context * {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+.video__context button {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-size: 1rem;
+    -webkit-line-clamp: 1;
+}
+
+.video__context button:hover {
+    text-decoration: underline;
+}
+
+.video__title {
+    font-weight: bold;
+    -webkit-line-clamp: 2;
+}
